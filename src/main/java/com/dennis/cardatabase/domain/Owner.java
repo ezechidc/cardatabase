@@ -1,5 +1,7 @@
 package com.dennis.cardatabase.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.lang.reflect.GenericArrayType;
 import java.util.List;
@@ -10,7 +12,9 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ownerid;
     private String firstname,lastname;
+
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "owner")
+    @JsonIgnore
     private List<Car> cars;
 
     public Owner() {
